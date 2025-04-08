@@ -13,7 +13,7 @@ class ServerStatus(commands.Cog):
     def set_status_channel(self, channel_id):
         self.status_channel_id = channel_id
 
-    @tasks.loop(seconds=5)
+    @tasks.loop(seconds=1)
     async def update_status(self):
         if self.status_channel_id:
             channel = self.bot.get_channel(self.status_channel_id)
@@ -57,17 +57,17 @@ class ServerStatus(commands.Cog):
                 # ส่งข้อความใหม่ถ้ายังไม่มีข้อความก่อนหน้า
                 self.last_message = await channel.send(embed=embed)
 
-    @nextcord.slash_command(name="setstatuschannel", description="ตั้งค่าช่องเพื่ออัปเดตสถานะของเซิร์ฟเวอร์")
+    @nextcord.slash_command(name="SetStatusChannel", description="ตั้งค่าช่องเพื่ออัปเดตสถานะของเซิร์ฟเวอร์")
     @commands.has_permissions(administrator=True)
     async def setstatuschannel(self, interaction: nextcord.Interaction, channel: nextcord.TextChannel):
         self.set_status_channel(channel.id)
-        await interaction.response.send_message(f"ตั้งค่าช่อง {channel.mention} เรียบร้อยแล้ว!", ephemeral=True)
+        await interaction.response.send_message(f"ตั้งค่าช่อง {channel.mention} ให้ส่งข้อความอัปเดตเรียบร้อยแล้ว!", ephemeral=True)
 
-    @nextcord.slash_command(name="stopstatus", description="หยุดการอัปเดตสถานะของเซิร์ฟเวอร์")
+    @nextcord.slash_command(name="StopStatus", description="หยุดการอัปเดตสถานะของเซิร์ฟเวอร์")
     @commands.has_permissions(administrator=True)
     async def stopstatus(self, interaction: nextcord.Interaction):
         self.update_status.stop()
-        await interaction.response.send_message("การอัปเดตสถานะถูกปิดแล้ว!", ephemeral=True)
+        await interaction.response.send_message("ปิดการอัปเดตสถานะแล้ว!", ephemeral=True)
 
 def setup(bot):
     bot.add_cog(ServerStatus(bot))
