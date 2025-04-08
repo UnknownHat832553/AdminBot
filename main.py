@@ -55,6 +55,7 @@ async def on_message(message):
 @bot.event
 async def on_ready():
     await bot.change_presence(activity=nextcord.Streaming(name="เป็นบอทแอดมินคับ😙",url="https://www.twitch.tv/Mr_Emptiness"))
+    print('Bot Run!')
 
 server_on()
 bot.run(os.getenv('TOKEN'))
