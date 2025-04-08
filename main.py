@@ -54,7 +54,7 @@ async def on_message(message):
 
 @bot.event
 async def on_ready():
-    await bot.change_presence(type=nextcord.ActivityType.watching, name="เป็นบอทแอดมินคับ😙"))
+    await bot.change_presence(activity=nextcord.Game(name="เป็นบอทแอดมินคับ😙"))
     print('Bot Run!')
 
 server_on()
