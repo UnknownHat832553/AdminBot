@@ -29,7 +29,7 @@ class ServerStatus(commands.Cog):
             offline_members = sum(1 for m in guild.members if m.status == nextcord.Status.offline)
 
             embed = nextcord.Embed(
-                title=f"สถานะของเซิร์ฟเวอร์ {guild.name}",
+                title=f"สถานะของเซิร์ฟเวอร์ **{guild.name}**",
                 color=0x00FF00
             )
             embed.set_thumbnail(url=guild.icon.url)
