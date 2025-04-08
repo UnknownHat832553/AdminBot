@@ -30,7 +30,7 @@ class ServerStatus(commands.Cog):
 
             embed = nextcord.Embed(
                 title=f"สถานะของเซิร์ฟเวอร์ **{guild.name}**",
-                color=0x00FF00
+                color=0x00FF00  # สีเขียว
             )
             embed.set_thumbnail(url=guild.icon.url)
             embed.add_field(name="**🕒・เวลาประเทศไทย**", value=f"`{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}`", inline=False)
@@ -45,10 +45,11 @@ class ServerStatus(commands.Cog):
 
             if self.last_message:
                 try:
-                    await self.last_message.delete()
+                    await self.last_message.edit(embed=embed)
                 except nextcord.errors.NotFound:
                     pass
-            self.last_message = await channel.send(embed=embed)
+            else:
+                self.last_message = await channel.send(embed=embed)
 
     @nextcord.slash_command(name="setstatuschannel", description="ตั้งค่าช่องเพื่ออัปเดตสถานะของเซิร์ฟเวอร์")
     @commands.has_permissions(administrator=True)
