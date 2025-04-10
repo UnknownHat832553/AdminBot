@@ -19,7 +19,7 @@ for filename in os.listdir(commands_path):
 
 @bot.event
 async def on_ready():
-    await bot.change_presence(activity=nextcord.Game(name="เป็นบอทแอดมินคับ😙"))
+    await bot.change_presence(activity=nextcord.Game(name="เป็นผู้ดูสถานะเซิร์ฟเวอร์ค่ะ"))
     print('Bot Run!')
 
 server_on()
