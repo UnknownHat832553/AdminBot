@@ -60,9 +60,13 @@ class ServerStatus(commands.Cog):
 
     @commands.command(name="set_status")
     @commands.has_permissions(administrator=True)
-    async def setstatuschannel(self, ctx: commands.Context, channel: nextcord.TextChannel):
+    async def setstatus(self, ctx: commands.Context, channel: nextcord.TextChannel):
         self.set_status_channel(channel.id)
         await ctx.send(f"ตั้งค่าช่อง {channel.mention} เรียบร้อยแล้ว!")
+        try:
+            await ctx.message.delete()
+        except:
+            pass
 
 
 def setup(bot):
