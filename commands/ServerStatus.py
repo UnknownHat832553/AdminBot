@@ -57,7 +57,7 @@ class ServerStatus(commands.Cog):
                 # ส่งข้อความใหม่ถ้ายังไม่มีข้อความก่อนหน้า
                 self.last_message = await channel.send(embed=embed)
 
-    @nextcord.slash_command(name="set_status_channel", description="ตั้งค่าช่องเพื่ออัปเดตสถานะของเซิร์ฟเวอร์")
+    @nextcord.slash_command(name="set_status", description="ตั้งค่าช่องเพื่ออัปเดตสถานะของเซิร์ฟเวอร์")
     @commands.has_permissions(administrator=True)
     async def setstatuschannel(self, interaction: nextcord.Interaction, channel: nextcord.TextChannel):
         self.set_status_channel(channel.id)
