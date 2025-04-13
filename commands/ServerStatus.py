@@ -63,11 +63,5 @@ class ServerStatus(commands.Cog):
         self.set_status_channel(channel.id)
         await interaction.response.send_message(f"ตั้งค่าช่อง {channel.mention} เรียบร้อยแล้ว!", ephemeral=True)
 
-    @nextcord.slash_command(name="stop_status", description="หยุดการอัปเดตสถานะของเซิร์ฟเวอร์")
-    @commands.has_permissions(administrator=True)
-    async def stopstatus(self, interaction: nextcord.Interaction):
-        self.update_status.stop()
-        await interaction.response.send_message("การอัปเดตสถานะถูกปิดแล้ว!", ephemeral=True)
-
 def setup(bot):
     bot.add_cog(ServerStatus(bot))
