@@ -31,6 +31,7 @@ class ServerStatus(commands.Cog):
             # ใช้ pytz เพื่อปรับเวลาให้เป็นเวลาไทย
             tz = pytz.timezone('Asia/Bangkok')
             thai_time = datetime.now(tz).strftime('%Y-%m-%d %H:%M:%S')
+            thai_time2 = datetime.now(tz).strftime('%Y-%m-%d')
 
             embed = nextcord.Embed(
                 title=f"สถานะของเซิร์ฟเวอร์ **{guild.name}**",
@@ -45,7 +46,7 @@ class ServerStatus(commands.Cog):
             embed.add_field(name="**🔴・ห้ามรบกวน**", value=f"`{dnd_members}` คน", inline=True)
             embed.add_field(name="**🟡・ไม่อยู่**", value=f"`{idle_members}` คน", inline=True)
             embed.add_field(name="**⚫・ออฟไลน์**", value=f"`{offline_members}` คน", inline=True)
-            embed.set_footer(text=f"อัปเดตล่าสุด: {thai_time}")
+            embed.set_footer(text=f"อัปเดตล่าสุด: {thai_time2}")
 
             # แก้ไขข้อความเก่าก่อนส่งข้อความใหม่
             if self.last_message:
