@@ -71,7 +71,7 @@ class ServerStatus(commands.Cog):
         except nextcord.errors.NotFound:
             self.last_message = await channel.send(embed=embed)
 
-    @commands.command(name="set_status")
+    @commands.command(name="setstatus")
     @commands.has_permissions(administrator=True)
     async def setstatus(self, ctx: commands.Context, channel: nextcord.TextChannel):
         self.set_status_channel(channel.id)
