@@ -73,7 +73,7 @@ class ServerStatus(commands.Cog):
 
     @commands.command(name="setstatus")
     @commands.has_permissions(administrator=True)
-    async def setstatuschannel(self, ctx: commands.Context, channel: nextcord.TextChannel):
+    async def setstatus(self, ctx: commands.Context, channel: nextcord.TextChannel):
         self.set_status_channel(channel.id)
         if not self.update_status.is_running():
             self.update_status.start()
